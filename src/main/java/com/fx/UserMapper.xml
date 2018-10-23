@@ -28,5 +28,21 @@
             WHERE
                 m.id = #{id}
   </select>
+    <!--=====================分步查询================-->
+    <resultMap id="userResultMapStep" type="com.fx.User">
+        <id property="id" column="id"></id>
+        <result property="loginId" column="loginId"></result>
+        <result property="userName" column="userName"></result>
+        <result property="note" column="note"></result>
+        <!-- association定义关联对象的封装规则
+	    select:表明当前属性是调用select指定的方法查询出结果
+	    column:指定将那一列的值传递给这个方法
+	    整个流程：使用Select指定的方法(传入column指定的这列参数的值)查出对象，并封装给property指定的属性-->
+        <association property="role" select="com.fx.RoleMapper.getRoleById" column="roleId">
+        </association>
+    </resultMap>
+    <select id="getUserByIdStep" resultMap="userResultMapStep">
+        select * from t_user where id=#{id}
+    </select>
 
 </mapper>

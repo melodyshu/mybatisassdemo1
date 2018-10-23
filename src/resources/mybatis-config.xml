@@ -21,5 +21,6 @@
     </environments>
     <mappers>
         <mapper resource="com/fx/UserMapper.xml"/>
+        <mapper resource="com/fx/RoleMapper.xml"/>
     </mappers>
 </configuration>

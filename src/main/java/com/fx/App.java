@@ -22,6 +22,11 @@ public class App
         User user= userMapper.getUserById(1);
         System.out.println(user);
         System.out.println(user.getRole());
+        System.out.println("=================");
+        //分步查询
+        user=userMapper.getUserByIdStep(1);
+        System.out.println(user);
+        System.out.println(user.getRole());
         sqlSession.close();
     }
 }
